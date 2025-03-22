@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Image as Background</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        transition: background-image 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center; margin-top: 20px">
+      Upload an image to set as background
+    </h2>
+    <div style="text-align: center; margin-top: 20px">
+      <input type="file" id="imageUpload" accept="image/*" />
+    </div>
+
+    <script>
+      // Get the file input element
+      const fileInput = document.getElementById("imageUpload");
+
+      // Add event listener for file input change
+      fileInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+          // Create a URL for the uploaded image
+          const imageUrl = URL.createObjectURL(file);
+
+          // Set the uploaded image as the background of the body
+          document.body.style.backgroundImage = `url(${imageUrl})`;
+        }
+      });
+    </script>
+  </body>
+</html>
