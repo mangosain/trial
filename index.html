@@ -23,6 +23,14 @@
     </div>
 
     <script>
+      // Check if an image URL is saved in localStorage and set it as the background
+      window.onload = function () {
+        const storedImage = localStorage.getItem("backgroundImage");
+        if (storedImage) {
+          document.body.style.backgroundImage = `url(${storedImage})`;
+        }
+      };
+
       // Get the file input element
       const fileInput = document.getElementById("imageUpload");
 
@@ -36,6 +44,9 @@
 
           // Set the uploaded image as the background of the body
           document.body.style.backgroundImage = `url(${imageUrl})`;
+
+          // Store the image URL in localStorage so it persists on reload
+          localStorage.setItem("backgroundImage", imageUrl);
         }
       });
     </script>
